@@ -1,0 +1,1 @@
+ffmpeg -framerate 24 -i ../../../Results/carnivoresequence/carnivoreimg%%08d.png ../../../Results/mp4/carnivores.mp4 -y

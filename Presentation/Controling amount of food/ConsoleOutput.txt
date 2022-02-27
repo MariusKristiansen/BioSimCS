@@ -1,0 +1,88 @@
+Running Simulation for 1000 years
+Island Layout:
+OOOOOOOOOOOOOOOOOOOO
+OSSSSSSJJJMMJJJJJJOO
+OSSSSSSJJJMMJJJJJJOO
+OSSSSSSJJJMMMJJJJJJO
+OOSSSSSSJJJMMJJJJJJO
+OOSSSSSSJJMMMJJJJJJO
+OOOOOOOOSMMMMJJJJJOO
+OSSSSSJJJJMMJJJJJOOO
+OSSSSSSSSSMMJJJOOOOO
+OSSSSDDDDDJJJJJOOOOO
+OSSSSDDDDDDJJJJOOOOO
+OSSSDDDDDDJJJJOOOOOO
+OOSSDDDDDMMMJOOOOOOO
+OOSDDDDDDMMSJJJJJOOO
+OSSDDDDDDDSSJJOOOOOO
+OSSSDDDDDDSSJOOOOOOO
+OOSSSSSDDDSJOOOOOOOO
+OOOSSSSJJJJJJOOOOOOO
+OOOSSSSSOOOOOOOOOOOO
+OOOOOOOOOOOOOOOOOOOO
+
+==>
+Running command:
+Command: FoodMaxAll
+Activiation Year: 50
+CellPosition:
+Parameters: 700
+
+
+==>
+Running command:
+Command: FoodMaxAll
+Activiation Year: 100
+CellPosition:
+Parameters: 600
+
+
+==>
+Running command:
+Command: FoodMaxAll
+Activiation Year: 150
+CellPosition:
+Parameters: 500
+
+
+==>
+Running command:
+Command: FoodMaxAll
+Activiation Year: 200
+CellPosition:
+Parameters: 450
+
+
+==>
+Running command:
+Command: FoodMaxAll
+Activiation Year: 300
+CellPosition:
+Parameters: 400
+
+
+==>
+Running command:
+Command: FoodMaxAll
+Activiation Year: 400
+CellPosition:
+Parameters: 300
+
+
+==>
+Running command:
+Command: FoodMaxAll
+Activiation Year: 600
+CellPosition:
+Parameters: 400
+
+
+==>
+Running command:
+Command: FoodMaxAll
+Activiation Year: 800
+CellPosition:
+Parameters: 1200
+
+Simulation finished after 1000 years.
+Elapsed time: 194 Seconds

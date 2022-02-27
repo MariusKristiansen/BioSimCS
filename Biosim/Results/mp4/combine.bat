@@ -1,0 +1,1 @@
+del populations.mp4 && ffmpeg -i carnivores.mp4 -i herbivores.mp4 -filter_complex hstack populations.mp4

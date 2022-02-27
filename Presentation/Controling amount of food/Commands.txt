@@ -1,0 +1,8 @@
+50 FoodMaxAll 700;
+100 FoodMaxAll 600;
+150 FoodMaxAll 500;
+200 FoodMaxAll 450;
+300 FoodMaxAll 400;
+400 FoodMaxAll 300;
+600 FoodMaxAll 400;
+800 FoodMaxAll 1200;
