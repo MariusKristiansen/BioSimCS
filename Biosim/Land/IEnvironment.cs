@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Biosim.Land
 {
-    public interface IEnviroment
+    public interface IEnvironment
     {
         List<Carnivore> Carnivores { get; set; }
         Position Pos { get; set; }

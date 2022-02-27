@@ -8,7 +8,7 @@ using Biosim.Tools;
 
 namespace Biosim.Land
 {
-    public class Enviroment : IEnviroment
+    public class Environment : IEnvironment
     {
 
         // Fields
@@ -49,7 +49,7 @@ namespace Biosim.Land
 
         // Constructor & Overloads
 
-        public Enviroment(Position pos, Random rng, DatabaseHandler dbhandler, List<Herbivore> initialHerbivores = null, List<Carnivore> initialCarnivores = null, List<Rodent> intitalRodents = null )
+        public Environment(Position pos, Random rng, DatabaseHandler dbhandler, List<Herbivore> initialHerbivores = null, List<Carnivore> initialCarnivores = null, List<Rodent> intitalRodents = null )
         {
             DBhandler = dbhandler;
             Rng = rng;
@@ -93,11 +93,11 @@ namespace Biosim.Land
             List<Carnivore> newbornCarnivores = new List<Carnivore>();
             Herbivores = Herbivores.OrderBy(i => i.Fitness).ToList();
             //string thisCouldBeChanged;
-            var numHerb = Herbivores.Count(); // Can also add Herbivores.Select(i => i.Age > 0).Count() to be sure all animals are not newborn
+            var numHerb = Herbivores.Count; // Can also add Herbivores.Select(i => i.Age > 0).Count() to be sure all animals are not newborn
             foreach (var herb in Herbivores)
             {
                 var result = herb.Birth(numHerb);
-                if (!(result is null))
+                if (result is not null)
                 {
                     newbornHerbivores.Add((Herbivore)result);
                 }
@@ -106,11 +106,11 @@ namespace Biosim.Land
             {
                 Herbivores.Add(child);
             }
-            NewHerbivores = newbornHerbivores.Count();
-            TotalHerbivoreLives += newbornHerbivores.Count();
+            NewHerbivores = newbornHerbivores.Count;
+            TotalHerbivoreLives += newbornHerbivores.Count;
 
             Carnivores = Carnivores.OrderBy(i => i.Fitness).ToList();
-            var numCarn = Carnivores.Count();
+            var numCarn = Carnivores.Count;
             foreach (var carn in Carnivores)
             {
                 var result = carn.Birth(numCarn);
@@ -123,8 +123,8 @@ namespace Biosim.Land
             {
                 Carnivores.Add(child);
             }
-            NewCarnivores = newbornCarnivores.Count();
-            TotalCarnivoreLives += newbornCarnivores.Count();
+            NewCarnivores = newbornCarnivores.Count;
+            TotalCarnivoreLives += newbornCarnivores.Count;
         }
 
         public void AgeCycle()
@@ -143,7 +143,7 @@ namespace Biosim.Land
         {
             DeadCarnivores += Carnivores.Where(i => !i.IsAlive).Count();
             DeadHerbivores += Herbivores.Where(i => !i.IsAlive).Count();
-            List<Herbivore> survivingHerbivores = new List<Herbivore>();
+            List<Herbivore> survivingHerbivores = new();
             foreach (var herb in Herbivores)
             {
                 if (herb.IsAlive)
@@ -264,7 +264,7 @@ namespace Biosim.Land
         // Methods
     }
 
-    public class Desert : Enviroment
+    public class Desert : Environment
     {
 
         public Desert(Position pos, Random rng, DatabaseHandler databaseHandler, List<Herbivore> initialHerbivores = null, List<Carnivore> initialCarnivores = null, List<Rodent> initialRodents = null) : base(pos, rng, databaseHandler, initialHerbivores, initialCarnivores, initialRodents)
@@ -274,7 +274,7 @@ namespace Biosim.Land
 
     }
 
-    public class Ocean : Enviroment
+    public class Ocean : Environment
     {
         public Ocean(Position pos, Random rng, DatabaseHandler databaseHandler) : base(pos, rng, databaseHandler)
         {
@@ -283,7 +283,7 @@ namespace Biosim.Land
 
     }
 
-    public class Mountain : Enviroment
+    public class Mountain : Environment
     {
 
         public Mountain(Position pos, Random rng, DatabaseHandler databaseHandler) : base(pos, rng, databaseHandler)
@@ -293,7 +293,7 @@ namespace Biosim.Land
 
     }
 
-    public class Savannah : Enviroment
+    public class Savannah : Environment
     {
 
         public Savannah(Position pos, Random rng, DatabaseHandler databaseHandler, List<Herbivore> initialHerbivores = null, List<Carnivore> initialCarnivores = null, List<Rodent> initialRodents = null) : base(pos, rng, databaseHandler, initialHerbivores, initialCarnivores, initialRodents)
@@ -308,7 +308,7 @@ namespace Biosim.Land
         }
     }
 
-    public class Jungle : Enviroment
+    public class Jungle : Environment
     {
         public Jungle(Position pos, Random rng, DatabaseHandler databaseHandler, List<Herbivore> initialHerbivores = null, List<Carnivore> initialCarnivores = null, List<Rodent> initialRodents = null) : base(pos, rng, databaseHandler, initialHerbivores, initialCarnivores, initialRodents)
         {

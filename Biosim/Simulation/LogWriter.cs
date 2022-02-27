@@ -23,12 +23,10 @@ namespace Biosim.Simulation
 
         public void LogCSV()
         {
-            using (TextWriter sw = new StreamWriter(Path.Combine(FilePath, FileName)))
+            using TextWriter sw = new StreamWriter(Path.Combine(FilePath, FileName));
+            foreach (var line in _data.Split('\n'))
             {
-                foreach (var line in _data.Split('\n'))
-                {
-                    sw.WriteLine(line);
-                }
+                sw.WriteLine(line);
             }
         }
     }

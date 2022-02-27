@@ -71,7 +71,7 @@ namespace Biosim.Animals
             return true;
         }
 
-        public void Migrate(List<Position> dir)
+        public virtual void Migrate(List<Position> dir)
         {
             // The animal gets a set of directions it is allowed to move to (based on the passable attribute passed in from the main controller (island)
             if (Fitness * Params.Mu > rng.NextDouble())
@@ -86,7 +86,7 @@ namespace Biosim.Animals
         }
 
 
-        public IAnimal Birth(int sameSpeciesInCell)
+        public virtual IAnimal Birth(int sameSpeciesInCell)
         {
             if (GivenBirth) return null;
             double probability;
@@ -197,7 +197,7 @@ namespace Biosim.Animals
         }
     }
 
-    public class Herbivore : Animal, IAnimal
+    public class Herbivore : Animal
     {
 
         public override double Qplus => 1 / (1 + Math.Exp(Params.PhiAge * (Age - Params.AHalf)));
@@ -209,7 +209,7 @@ namespace Biosim.Animals
             Weight = norm.Sample();
         }
 
-        public double Feed(double availableFood)
+        public virtual double Feed(double availableFood)
         {
             double willEat = (availableFood >= Params.F) ? Params.F : availableFood;
             double leftOver = availableFood - willEat;
@@ -274,7 +274,7 @@ namespace Biosim.Animals
         
     }
 
-    public class Carnivore : Animal, IAnimal
+    public class Carnivore : Animal
     {
 
         public override double Qplus => 1 / (1 + Math.Exp(Params.PhiAge * (Age - Params.AHalf)));

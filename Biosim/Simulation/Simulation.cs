@@ -96,7 +96,7 @@ namespace Biosim.Simulation
         public int YearsToSimulate { get; set; }
         public bool NoMigration { get; set; }
         public string TemplateString { get; set; }
-        public List<List<IEnviroment>> Land { get; set; }
+        public List<List<IEnvironment>> Land { get; set; }
         public Position DefaultDim { get; set; } = new Position { x = 10, y = 10 };
         public Random Rng { get; set; }
         public LogWriter Logger { get; set; }
@@ -187,7 +187,7 @@ namespace Biosim.Simulation
 
         public Position Build()
         {
-            Land = new List<List<IEnviroment>>();
+            Land = new List<List<IEnvironment>>();
             var logstring = "year";
             if (TemplateString.Contains('/')) throw new Exception("The input template string has incorrect formatting, use backslash \"\\\" to annotate newline");
             var lines = TemplateString.Split('\n');
@@ -195,7 +195,7 @@ namespace Biosim.Simulation
             var yDim = lines[0].Length;
             for (int i = 0; i < lines.Length; i++)
             {
-                List<IEnviroment> islandLine = new List<IEnviroment>();
+                List<IEnvironment> islandLine = new List<IEnvironment>();
                 for (int j = 0; j < lines[i].Length; j++)
                 {
                     logstring += $",{lines[i][j]}";
@@ -305,7 +305,7 @@ namespace Biosim.Simulation
             return false;
         }
 
-        public void Migrate(IEnviroment cell)
+        public void Migrate(IEnvironment cell)
         {
             /*
             Gets surrounding cells and feeds them to the individual animals in a cell, the animal then sets a personal parameter indicating what cell it wants to move to*/
@@ -355,12 +355,12 @@ namespace Biosim.Simulation
             CurrentYear++;
         }
 
-        public string GetCellInformation(IEnviroment cell)
+        public string GetCellInformation(IEnvironment cell)
         {
             return cell.ToString();
         }
 
-        public void OneCellYearFirstHalf(IEnviroment cell)
+        public void OneCellYearFirstHalf(IEnvironment cell)
         {
             cell.ResetCurrentYearParameters();
             cell.GrowFood();
@@ -370,7 +370,7 @@ namespace Biosim.Simulation
             TotalHerbivoresCreated += cell.NewHerbivores;
             TotalCarnivoresCreated += cell.NewCarnivores;
         }
-        public void OneCellYearSecondHalf(IEnviroment cell)
+        public void OneCellYearSecondHalf(IEnvironment cell)
         {
             cell.AgeCycle();
             cell.WeightLossCycle();
@@ -746,14 +746,14 @@ namespace Biosim.Simulation
             CarnivorePopulationMap.WriteCSV();
         }
 
-        public IEnviroment GetCell(Position pos)
+        public IEnvironment GetCell(Position pos)
         {
             if (pos.x > Dimentions.x) return null;
             if (pos.y > Dimentions.y) return null;
             return Land[pos.x][pos.y];
         }
 
-        public IEnviroment GetCell(int x, int y)
+        public IEnvironment GetCell(int x, int y)
         {
             if (x > Dimentions.x) return null;
             if (y > Dimentions.y) return null;

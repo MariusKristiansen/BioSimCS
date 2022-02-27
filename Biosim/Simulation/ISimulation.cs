@@ -11,7 +11,7 @@ namespace Biosim.Simulation
     {
         string TemplateString { get; set; }
         bool NoMigration { get; set; }
-        List<List<IEnviroment>> Land { get; set; } // Nested List
+        List<List<IEnvironment>> Land { get; set; } // Nested List
         Position DefaultDim { get; set; }
         int YearsToSimulate { get; set; }
         Random Rng { get; set; }
@@ -47,21 +47,21 @@ namespace Biosim.Simulation
 
         void ExecuteCommand(CommandData command);
         Position Build();
-        void Migrate(IEnviroment cell);
+        void Migrate(IEnvironment cell);
         void AddAnimals(List<Animal> animals, Position cellPosition);
         void AddHerbivore(int age, double w, Position cellPosition, IAnimalParams par);
         void AddCarnivore(int age, double w, Position cellPosition, IAnimalParams par);
         void AddHerbivore(Position cellPosition, IAnimalParams par);
         void AddCarnivore(Position cellPosition, IAnimalParams par);
-        string GetCellInformation(IEnviroment cell);
-        IEnviroment GetCell(Position pos);
-        IEnviroment GetCell(int x, int y);
+        string GetCellInformation(IEnvironment cell);
+        IEnvironment GetCell(Position pos);
+        IEnvironment GetCell(int x, int y);
         void AddTrackedAnimals(List<int> ids); // Adds the animals with the given IDs to tracking. (sets animal.Tracked)
         void TrackAnimals();
         void GetTrackedAnimals(); // Fetches all tracked animals in the simulation and adds them to the local list of trakced animals.
         void Simulate();
-        void OneCellYearFirstHalf(IEnviroment cell);
-        void OneCellYearSecondHalf(IEnviroment cell);
+        void OneCellYearFirstHalf(IEnvironment cell);
+        void OneCellYearSecondHalf(IEnvironment cell);
         void OneYear(); // Runs the simulation for one year and returns a string of data
         void LoadCustomOnCellParameters(Position cellPos, IAnimalParams parameters); // Parameters for all animals of a type in cell
         bool LoadCustomParametersOnAnimal(IAnimal animal, IAnimalParams parameters);
