@@ -55,7 +55,7 @@ namespace Biosim
             }
             sim.Simulate();
             //sim.Plot();
-            //sim.GeneratePopulationImages();
+            sim.GeneratePopulationImages();
             //sim.RunFFMPEG();
         }
     }
